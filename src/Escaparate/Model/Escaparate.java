@@ -18,7 +18,7 @@ public class Escaparate {
         listadoStockProductos = new ArrayList<>();
     }
 
-    public void anyadirProductos(StockProducto producto) {
+    public void anyadirProducto(StockProducto producto) {
         if ( producto.obtenerMarca() != this.marca ) {
             throw new CanNotMergeBrandsException();
         }
