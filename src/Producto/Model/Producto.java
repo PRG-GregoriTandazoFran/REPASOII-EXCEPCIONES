@@ -8,11 +8,13 @@ public class Producto {
     private String id;
     private double precio;
     private Marca  marca;
+    private StockProducto stockProducto;
 
     public Producto(String id, double precio, Marca marca) {
         this.id     = id;
         this.precio = precio;
         this.marca  = marca;
+        this.stockProducto = new StockProducto( this );
     }
 
     public String getId() {
