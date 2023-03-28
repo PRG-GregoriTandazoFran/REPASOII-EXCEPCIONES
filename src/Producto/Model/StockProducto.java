@@ -1,5 +1,7 @@
 package Producto.Model;
 
+import Exceptions.NotExistEnoughtItemException;
+import Exceptions.ProductStockZero;
 import Marca.Marca;
 
 import java.util.concurrent.ThreadLocalRandom;
@@ -17,7 +19,18 @@ public class StockProducto {
         return this.producto.getPrecio();
     }
 
-    public Marca obtenerMarca(){
+    public Marca obtenerMarca() {
         return this.producto.getMarca();
+    }
+
+    public void decrementarUnidades(int unidades) throws ProductStockZero, NotExistEnoughtItemException {
+        if ( this.unidades == 0 ) {
+            throw new ProductStockZero();
+        }
+
+        if ( this.unidades - unidades < 0 ) {
+            throw new NotExistEnoughtItemException();
+        }
+        this.unidades -= unidades;
     }
 }
