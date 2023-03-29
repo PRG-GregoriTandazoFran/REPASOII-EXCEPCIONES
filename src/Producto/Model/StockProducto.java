@@ -63,8 +63,4 @@ public class StockProducto {
         }
         return null;
     }
-
-    public boolean hayStock(){
-        return this.unidades >=1;
-    }
 }
