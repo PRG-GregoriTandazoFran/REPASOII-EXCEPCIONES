@@ -11,7 +11,7 @@ import Utils.GestorIO;
 
 import java.util.ArrayList;
 
-public class Escaparate {
+public abstract class Escaparate {
     private String              nombre;
     private Marca               marca;
     private ArrayList<Producto> listadoStockProductos;
