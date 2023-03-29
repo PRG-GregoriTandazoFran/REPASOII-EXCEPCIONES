@@ -33,6 +33,9 @@ public class Producto {
         this.precio = precio;
     }
 
+    public StockProducto getStockProducto(){
+        return this.stockProducto;
+    }
     @Override
     public boolean equals(Object o) {
         if ( this == o ) return true;
