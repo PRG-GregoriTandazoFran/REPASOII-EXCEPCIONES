@@ -73,7 +73,6 @@ public class Escaparate {
         //El escaparate debe estar abierto para poder vender
         //Falta añadirlo
         Producto productoToSell;
-
         String codProducto = GestorIO.pedirCadena( "Escoja el producto a comprar: " );
         productoToSell = this.findProductAvailableList( codProducto );
         int unidades = GestorIO.pedirEntero( "Esoja las unidades del producto " + productoToSell.getId() + ": " );

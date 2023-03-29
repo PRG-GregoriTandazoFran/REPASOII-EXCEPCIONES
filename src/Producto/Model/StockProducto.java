@@ -4,6 +4,7 @@ import Exceptions.NotExistEnoughtItemException;
 import Exceptions.ProductStockZero;
 import Marca.Marca;
 
+import java.util.Objects;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class StockProducto {
@@ -45,7 +46,7 @@ public class StockProducto {
 
     public StockProducto findProductInStock() {
         if ( this.unidades >= 1 ) {
-            return new StockProducto( new Producto( this.producto.getId(), this.producto.getPrecio(), this.producto.getMarca() ),this.unidades );
+            return new StockProducto( new Producto( this.producto.getId(), this.producto.getPrecio(), this.producto.getMarca() ), this.unidades );
         }
         return null;
     }
@@ -59,8 +60,21 @@ public class StockProducto {
 
     public StockProducto findProduct(String cod) {
         if ( this.producto.getId().equals( cod ) ) {
-            return new StockProducto( new Producto( this.producto.getId(), this.producto.getPrecio(), this.producto.getMarca() ),this.unidades );
+            return new StockProducto( new Producto( this.producto.getId(), this.producto.getPrecio(), this.producto.getMarca() ), this.unidades );
         }
         return null;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if ( this == o ) return true;
+        if ( o == null || getClass() != o.getClass() ) return false;
+        StockProducto producto1 = (StockProducto) o;
+        return Objects.equals( producto, producto1.producto );
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash( producto );
     }
 }
