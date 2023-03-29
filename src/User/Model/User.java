@@ -1,5 +1,6 @@
 package User.Model;
 
+import Escaparate.Model.EscaparateFinExistencias;
 import Producto.Model.Producto;
 
 public class User {
@@ -11,7 +12,7 @@ public class User {
         this.nombre = nombre;
     }
 
-    public void buy(){
-
+    public void buy(EscaparateFinExistencias escaparateFinExistencias){
+        escaparateFinExistencias.sellProduct();
     }
 }
