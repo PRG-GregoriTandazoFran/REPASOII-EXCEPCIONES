@@ -1,5 +1,33 @@
+import Escaparate.Model.Escaparate;
+import Marca.Marca;
+import Producto.Model.Producto;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println( "Hello world!" );
+        Escaparate esc1  = new Escaparate( "Lacoste", Marca.LaCostera );
+        Producto   gorra = new Producto( "d123", 20., Marca.LaCostera );
+        System.out.println(gorra.getStockProducto().obtenerUnidades());
+        esc1.anyadirProducto( gorra );
+        esc1.anyadirProducto( gorra );
+        esc1.anyadirProducto( gorra );
+        esc1.anyadirProducto( gorra );
+        esc1.anyadirProducto( gorra );
+        esc1.anyadirProducto( gorra );
+        esc1.anyadirProducto( gorra );
+        esc1.anyadirProducto( gorra );
+        esc1.anyadirProducto( gorra );
+        esc1.anyadirProducto( gorra );
+        esc1.anyadirProducto( gorra );
+        esc1.anyadirProducto( gorra );
+        esc1.anyadirProducto( gorra );
+        esc1.anyadirProducto( gorra );
+        esc1.anyadirProducto( gorra );
+        esc1.anyadirProducto( gorra );
+        esc1.anyadirProducto( gorra );
+        esc1.anyadirProducto( gorra );
+        esc1.anyadirProducto( gorra );
+        esc1.anyadirProducto( gorra );
+        esc1.sellProduct();
+        System.out.println(gorra.getStockProducto().obtenerUnidades());
     }
 }

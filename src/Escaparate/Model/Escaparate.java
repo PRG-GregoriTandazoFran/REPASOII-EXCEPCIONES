@@ -72,19 +72,19 @@ public class Escaparate {
     public void sellProduct() {
         //El escaparate debe estar abierto para poder vender
         //Falta añadirlo
-        String   codProducto    = GestorIO.pedirCadena( "Escoja el producto a comprar: " );
-        Producto productoToSell = this.findProductAvailableList( codProducto );
-        int      unidades       = GestorIO.pedirEntero( "Esoja las unidades del producto " + productoToSell.getId() + ": " );
-        productoToSell.getStockProducto().decrementarUnidades( unidades );
+        Producto productoToSell;
 
+        String codProducto = GestorIO.pedirCadena( "Escoja el producto a comprar: " );
+        productoToSell = this.findProductAvailableList( codProducto );
+        int unidades = GestorIO.pedirEntero( "Esoja las unidades del producto " + productoToSell.getId() + ": " );
+        productoToSell.getStockProducto().decrementarUnidades( unidades );
     }
 
     private Producto findProductAvailableList(String codProducto) throws ProductNotExist {
         for ( Producto product :
                 this.listadoStockProductos ) {
-            Producto producto = product.getStockProducto().findByCod( codProducto );
-            if ( producto.getStockProducto().obtenerUnidades() >= 1 ) {
-                return producto;
+            if ( product.getId().equals( codProducto ) && product.getStockProducto().obtenerUnidades() >= 1 ) {
+                return product;
             }
         }
         throw new ProductNotExist();
