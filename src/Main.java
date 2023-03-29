@@ -5,16 +5,15 @@ import Producto.Model.Producto;
 
 public class Main {
     public static void main(String[] args) {
-        Escaparate esc1  = new EscaparateFinExistencias( "Lacoste", Marca.LaCostera );
-        Producto   gorra = new Producto( "d123", 20., Marca.LaCostera );
+        EscaparateFinExistencias esc1  = new EscaparateFinExistencias( "Lacoste", Marca.LaCostera );
+        Producto                 gorra = new Producto( "d123", 20., Marca.LaCostera );
 
         System.out.println( gorra.getStockProducto().obtenerUnidades() );
-
         esc1.anyadirProducto( gorra );
-        do {
-            esc1.sellProduct();
-            System.out.println( gorra.getStockProducto().obtenerUnidades() );
-        }while ( true );
+        esc1.cerrar();
+
+        esc1.sellProduct();
+        System.out.println( gorra.getStockProducto().obtenerUnidades() );
 
     }
 }
