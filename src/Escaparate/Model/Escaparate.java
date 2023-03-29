@@ -82,7 +82,7 @@ public abstract class Escaparate {
     private Producto findProductAvailableList(String codProducto) throws ProductNotExist {
         for ( Producto product :
                 this.listadoStockProductos ) {
-            if ( product.getId().equals( codProducto ) && product.getStockProducto().obtenerUnidades() >= 1 ) {
+            if ( product.getId().equals( codProducto ) && product.getStockProducto().obtenerUnidades() >= 0 ) {
                 return product;
             }
         }
