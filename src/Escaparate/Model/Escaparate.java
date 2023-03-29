@@ -2,6 +2,8 @@ package Escaparate.Model;
 
 import Exceptions.CanNotMergeBrandsException;
 import Exceptions.ProductListIsFull;
+import Exceptions.ProductNotExist;
+import Exceptions.ProductStockZero;
 import Marca.Marca;
 import Producto.Model.Producto;
 import Producto.Model.StockProducto;
@@ -49,5 +51,20 @@ public class Escaparate {
             }
         }
         return false;
+    }
+
+    public int availableQuantityProducto(String cod) throws ProductNotExist, ProductStockZero {
+        StockProducto producto = null;
+        for ( StockProducto product :
+                this.listadoStockProductos ) {
+            producto = product.findProduct( cod );
+        }
+        if ( producto == null ) {
+            throw new ProductNotExist();
+        }
+        if ( producto.obtenerUnidades() == 0 ) {
+            throw new ProductStockZero();
+        }
+        return producto.obtenerUnidades();
     }
 }

@@ -15,6 +15,11 @@ public class StockProducto {
         this.unidades = ThreadLocalRandom.current().nextInt( 1, 11 );
     }
 
+    public StockProducto(Producto producto, int unidades) {
+        this.producto = producto;
+        this.unidades = unidades;
+    }
+
     public double obtenerPrecio() {
         return this.producto.getPrecio();
     }
@@ -40,14 +45,21 @@ public class StockProducto {
 
     public StockProducto findProductInStock() {
         if ( this.unidades >= 1 ) {
-            return new StockProducto( new Producto( this.producto.getId(), this.producto.getPrecio(), this.producto.getMarca() ) );
+            return new StockProducto( new Producto( this.producto.getId(), this.producto.getPrecio(), this.producto.getMarca() ),this.unidades );
         }
         return null;
     }
 
-    public Producto findByCod(String cod){
-        if ( this.producto.getId().equals( cod ) ){
+    public Producto findByCod(String cod) {
+        if ( this.producto.getId().equals( cod ) ) {
             return this.producto;
+        }
+        return null;
+    }
+
+    public StockProducto findProduct(String cod) {
+        if ( this.producto.getId().equals( cod ) ) {
+            return new StockProducto( new Producto( this.producto.getId(), this.producto.getPrecio(), this.producto.getMarca() ),this.unidades );
         }
         return null;
     }
