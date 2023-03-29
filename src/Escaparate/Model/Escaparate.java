@@ -3,6 +3,7 @@ package Escaparate.Model;
 import Exceptions.CanNotMergeBrandsException;
 import Exceptions.ProductListIsFull;
 import Marca.Marca;
+import Producto.Model.Producto;
 import Producto.Model.StockProducto;
 
 import java.util.ArrayList;
@@ -26,5 +27,27 @@ public class Escaparate {
             throw new ProductListIsFull();
         }
         this.listadoStockProductos.add( producto );
+    }
+
+    public ArrayList<StockProducto> listProductsInStock() {
+        ArrayList<StockProducto> listaProductos = new ArrayList<>();
+        for ( StockProducto producto :
+                this.listadoStockProductos ) {
+            if ( producto.findProductInStock() != null ) {
+                listaProductos.add( producto.findProductInStock() );
+            }
+        }
+        return listaProductos;
+    }
+
+    public boolean knownProductIsInStock(String cod) {
+        for ( StockProducto producto :
+                this.listadoStockProductos ) {
+            Producto productoFinded = producto.findByCod( cod );
+            if ( productoFinded != null ) {
+                return true;
+            }
+        }
+        return false;
     }
 }

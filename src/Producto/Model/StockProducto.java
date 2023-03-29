@@ -33,4 +33,22 @@ public class StockProducto {
         }
         this.unidades -= unidades;
     }
+
+    public int obtenerUnidades() {
+        return this.unidades;
+    }
+
+    public StockProducto findProductInStock() {
+        if ( this.unidades >= 1 ) {
+            return new StockProducto( new Producto( this.producto.getId(), this.producto.getPrecio(), this.producto.getMarca() ) );
+        }
+        return null;
+    }
+
+    public Producto findByCod(String cod){
+        if ( this.producto.getId().equals( cod ) ){
+            return this.producto;
+        }
+        return null;
+    }
 }
