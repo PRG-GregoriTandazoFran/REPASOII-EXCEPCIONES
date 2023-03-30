@@ -29,5 +29,7 @@ public class EscaparateTemporal extends Escaparate {
         }
     }
 
-    //CurrentTimeMilis
+    public void sumarDias(int dias) {
+        this.dateActual = this.dateActual.plusDays( dias );
+    }
 }
